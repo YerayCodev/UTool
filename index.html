@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UTool - Proyecto Integrador</title>
+  <link rel="icon" type="image/x-icon" href="logo.ico">
+  <style>
+    :root {
+      /* Paleta del logo */
+      --color-verde: #45af21;
+      --color-azul-oscuro: #25333f;
+      --color-negro: #000000;
+      --color-blanco: #ffffff;
+
+      /* Tema claro */
+      --fondo-claro: var(--color-blanco);
+      --texto-claro: var(--color-negro);
+
+      /* Tema oscuro */
+      --fondo-oscuro: #1a1a1a;
+      --texto-oscuro: var(--color-blanco);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--fondo-claro);
+      color: var(--texto-claro);
+      transition: background-color 0.5s, color 0.5s;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--color-verde), var(--color-azul-oscuro));
+      color: var(--color-blanco);
+      padding: 2rem;
+      text-align: center;
+      position: relative;
+    }
+
+    header img {
+      width: 70px;
+      vertical-align: middle;
+      margin-bottom: 10px;
+    }
+
+    header h1 {
+      margin: 0.5rem 0 0 0;
+      font-size: 2.5rem;
+    }
+
+    header p {
+      margin: 0;
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+
+    main {
+      padding: 2rem;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    section {
+      margin-bottom: 3rem;
+    }
+
+    h2 {
+      color: var(--color-verde);
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      border-left: 6px solid var(--color-verde);
+      padding-left: 10px;
+    }
+
+    .funciones, .integrantes {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      padding: 1.5rem;
+      border-radius: 15px;
+      background: #f9f9f9;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s, background 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      background: #f0f0f0;
+    }
+
+    .integrante-card {
+      text-align: center;
+      padding: 1.5rem;
+      border-radius: 15px;
+      background: #f9f9f9;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s, background 0.3s;
+    }
+
+    .integrante-card:hover {
+      transform: translateY(-5px);
+      background: #eef9f0;
+    }
+
+    .integrante-card h3 {
+      margin: 0.5rem 0 0.2rem 0;
+      color: var(--color-verde);
+    }
+
+    .integrante-card p {
+      margin: 0.2rem 0;
+    }
+
+    .redes {
+      margin-top: 0.5rem;
+    }
+
+    .redes a {
+      margin: 0 5px;
+      text-decoration: none;
+      font-size: 1.2rem;
+      color: var(--color-azul-oscuro);
+      transition: color 0.3s;
+    }
+
+    .redes a:hover {
+      color: var(--color-verde);
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: var(--color-verde);
+      color: var(--color-blanco);
+    }
+
+    /* Modo oscuro */
+    body.dark {
+      background-color: var(--fondo-oscuro);
+      color: var(--texto-oscuro);
+    }
+
+    body.dark .card,
+    body.dark .integrante-card {
+      background: #2a2a2a;
+      color: var(--texto-oscuro);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+    }
+
+    body.dark h2 {
+      color: var(--color-verde);
+    }
+
+    body.dark .redes a {
+      color: var(--color-blanco);
+    }
+
+    .toggle-btn {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      padding: 0.6rem 1.2rem;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      background: var(--color-verde);
+      color: var(--color-blanco);
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: transform 0.2s;
+    }
+
+    .toggle-btn:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <button class="toggle-btn" onclick="toggleTheme()">🌙 / ☀️</button>
+
+  <header>
+    <img src="Logo Utool.ico" alt="Logo UTool">
+    <h1>UTool</h1>
+    <p>Apoyando la vida académica de los estudiantes</p>
+    <p><strong>Grupo DSM32</strong></p>
+  </header>
+
+  <main>
+    <section>
+      <h2>Sobre el proyecto</h2>
+      <p>
+        <strong>UTool</strong> es una aplicación de escritorio diseñada para ayudar a los estudiantes 
+        a organizar mejor su vida académica. Ofrece tres funciones clave que facilitan las actividades diarias:
+        agenda, mapa del campus y bloc de notas.
+      </p>
+    </section>
+
+    <section>
+      <h2>Funciones principales</h2>
+      <div class="funciones">
+        <div class="card">
+          <h3>📅 Agenda</h3>
+          <p>Organiza tus tareas, exámenes y actividades en un solo lugar.</p>
+        </div>
+        <div class="card">
+          <h3>🗺️ Mapa de Campus</h3>
+          <p>Encuentra salones, edificios y servicios del campus de forma sencilla.</p>
+        </div>
+        <div class="card">
+          <h3>📝 Bloc de Notas</h3>
+          <p>Toma notas rápidas para tus clases o recordatorios importantes.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Integrantes del equipo</h2>
+      <div class="integrantes">
+        <div class="integrante-card">
+          <h3>David</h3>
+          <p>Rol: Diseñador</p>
+          <p>Matrícula: 24311414</p>
+        </div>
+        <div class="integrante-card">
+          <h3>Miguel</h3>
+          <p>Rol: Base de datos</p>
+          <p>Matrícula: 24311336</p>
+        </div>
+        <div class="integrante-card">
+          <h3>Gael</h3>
+          <p>Rol: Documentador</p>
+          <p>Matrícula: 24311424</p>
+        </div>
+        <div class="integrante-card">
+          <h3>Yeray</h3>
+          <p>Rol: Programador</p>
+          <p>Matrícula: 24311450</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Universidad Tecnologica de Ciudad Juarez - Proyecto Integrador - DSM32 ✦ UTool © 2025</p>
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle("dark");
+    }
+  </script>
+</body>
+</html>
